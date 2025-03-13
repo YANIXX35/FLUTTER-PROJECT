@@ -1,8 +1,9 @@
-// ignore_for_file: unused_import, avoid_print, deprecated_member_use
+// ignore_for_file: unused_import, avoid_print, deprecated_member_use, undefined_shown_name
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:football_app/constants.dart';
+import 'package:football_app/screens/user_sreen_.dart' show UserScreen;
 import 'package:football_app/widgets/live_match_box.dart';
 import 'package:football_app/widgets/upcoming_match.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,10 +12,14 @@ import 'package:football_app/screens/bundesliga_screen_.dart';
 import 'package:football_app/screens/serie_a_screen_.dart';
 import 'package:football_app/screens/tennis_screen.dart';
 import 'package:football_app/screens/basket_screen.dart';
+import 'package:football_app/screens/user_screen.dart';
+import 'package:football_app/screens/boxe_screen.dart'; // ✅ Import de BoxeScreen
 
 import 'basket_screen_.dart';
+import 'boxe_screen_.dart';
 import 'serie_a_screen.dart';
 import 'tennis_screen_.dart';
+import 'user_screen_.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,6 +30,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String selectedLeague = "Premier League";
+
   final List<String> leagues = [
     "Premier League",
     "La Liga",
@@ -33,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   List<String> notifications = [
-    "Chelsea vs Lester City: 3-1",
+    "Chelsea vs Leicester City: 3-1",
     "Marseille vs Dortmund: 1-1",
     "Liverpool vs Man United: À venir",
     "Tottenham vs Swansea: À venir"
@@ -71,7 +77,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 title: const Text('Boxe'),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context); // Ferme la boîte de dialogue
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            BoxeScreen()), // ✅ Ouvre BoxeScreen
+                  );
                 },
               ),
               ListTile(
@@ -137,6 +149,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
         actions: [
+          IconButton(
+            icon: const Icon(Iconsax.user),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UserScreen()),
+              );
+            },
+          ),
           PopupMenuButton<String>(
             onSelected: (String value) {
               print(value);
@@ -243,7 +264,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       fit: BoxFit.contain,
                       alignment: Alignment.bottomLeft,
                       opacity: 0.3,
-                    ), homeTeam: '',
+                    ),
+                    homeTeam: '',
                   ),
                   LiveMatchBox(
                     awayGoal: 4,
@@ -260,77 +282,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       fit: BoxFit.contain,
                       alignment: Alignment.bottomLeft,
                       opacity: 0.1,
-                    ), homeTeam: '',
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Text(
-                    "Up-Coming Matches",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey.shade800,
-                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  const Spacer(),
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      foregroundColor: kprimaryColor,
-                    ),
-                    child: const Text("See all"),
+                    homeTeam: '',
                   )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ListView(
-                shrinkWrap: true,
-                primary: false,
-                physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  UpComingMatch(
-                    awayLogo: "assets/images/man_united.png",
-                    awayTitle: "Man United",
-                    homeLogo: "assets/images/liverpool.png",
-                    homeTitle: "Liverpool FC",
-                    date: "18 decembre",
-                    time: "15:30",
-                    isFavorite: true,
-                  ),
-                  UpComingMatch(
-                    awayLogo: "assets/images/swansea.png",
-                    awayTitle: "Swansea AFC",
-                    homeLogo: "assets/images/tottenham.png",
-                    homeTitle: "Tottenham",
-                    date: "6 novembre",
-                    time: "22:30",
-                    isFavorite: false,
-                  ),
-                  UpComingMatch(
-                    awayLogo: "assets/images/stoke.png",
-                    awayTitle: "Stoke City",
-                    homeLogo: "assets/images/arsenal.png",
-                    homeTitle: "Arsenal",
-                    date: "18 octobre",
-                    time: "06:30",
-                    isFavorite: false,
-                  ),
-                  UpComingMatch(
-                    awayLogo: "assets/images/southampton.png",
-                    awayTitle: "Southhampton",
-                    homeLogo: "assets/images/sunderland.png",
-                    homeTitle: "Sunderland",
-                    date: "1 decembre",
-                    time: "16:30",
-                    isFavorite: false,
-                  ),
                 ],
               ),
             ),

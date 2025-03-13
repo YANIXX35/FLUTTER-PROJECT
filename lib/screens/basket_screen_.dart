@@ -74,6 +74,27 @@ class HomePage extends StatelessWidget {
       'image1': 'assets/images/chicago.png',
       'image2': 'assets/images/miamih.png'
     },
+    {
+      'team1': 'Phoenix Suns',
+      'team2': 'San Antonio Spurs',
+      'score': '110-103',
+      'image1': 'assets/images/phoenix.png',
+      'image2': 'assets/images/antonio.png'
+    },
+    {
+      'team1': 'Denver Nuggets',
+      'team2': 'New York Knicks',
+      'score': '98-105',
+      'image1': 'assets/images/denver.png',
+      'image2': 'assets/images/newyork.png'
+    },
+    {
+      'team1': 'Philadelphia 76ers',
+      'team2': 'Houston Rockets',
+      'score': '120-115',
+      'image1': 'assets/images/philadelphia.png',
+      'image2': 'assets/images/houston.png'
+    },
   ];
 
   @override
@@ -111,6 +132,27 @@ class CalendarPage extends StatelessWidget {
       'image1': 'assets/images/toronnto.jpg',
       'image2': 'assets/images/dallas.jpg'
     },
+    {
+      'team1': 'Memphis Grizzlies',
+      'team2': 'Orlando Magic',
+      'date': '16 Mars 2025',
+      'image1': 'assets/images/memphis.png',
+      'image2': 'assets/images/orlando.png'
+    },
+    {
+      'team1': 'Atlanta Hawks',
+      'team2': 'Portland Trail Blazers',
+      'date': '18 Mars 2025',
+      'image1': 'assets/images/atlantahawk.png',
+      'image2': 'assets/images/portland.png'
+    },
+    {
+      'team1': 'Sacramento Kings',
+      'team2': 'Charlotte Hornets',
+      'date': '20 Mars 2025',
+      'image1': 'assets/images/sacraento.jpeg',
+      'image2': 'assets/images/charlotte.png'
+    },
   ];
 
   @override
@@ -145,6 +187,16 @@ class StatsPage extends StatelessWidget {
       'image': 'assets/images/boston.png'
     },
     {'team': 'Miami Heat', 'points': '50', 'image': 'assets/images/miamih.png'},
+    {
+      'team': 'Golden State Warriors',
+      'points': '48',
+      'image': 'assets/images/golden.png'
+    },
+    {
+      'team': 'Denver Nuggets',
+      'points': '46',
+      'image': 'assets/images/denver.png'
+    },
   ];
 
   @override
@@ -178,7 +230,7 @@ class ProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text('Utilisateur : John Doe', style: TextStyle(fontSize: 20)),
-          Text('Email : johndoe@gmail.com',
+          Text('Email : KodjoRenezzzzz@gmail.com',
               style: TextStyle(fontSize: 16, color: Colors.grey)),
         ],
       ),
