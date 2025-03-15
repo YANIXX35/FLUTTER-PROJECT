@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
     const HomeScreen(),
     CalendarScreen(),
     const FootballNewsScreen(),
-    const AccountPage(),
+    const AccountSettingsScreen(), // Nouveau widget AccountSettingsScreen
     const Scaffold(),
     const Scaffold(),
     const Scaffold(),
@@ -141,63 +141,80 @@ class BottomNavItem extends StatelessWidget {
   }
 }
 
-class Account {
-  final String playerName;
-  final int playerNumber;
-  final String position;
-
-  Account(this.playerName, this.playerNumber, this.position);
-}
-
-// Création d'une liste de comptes (joueurs de football)
-List<Account> accounts = [
-  Account('Lionel Messi', 10, 'Attaquant'),
-  Account('Cristiano Ronaldo', 7, 'Attaquant'),
-  Account('Neymar Jr', 10, 'Milieu'),
-  // Ajoutez d'autres joueurs si nécessaire
-];
-
-// Création d'un widget pour afficher les informations du compte (joueur)
-class AccountWidget extends StatelessWidget {
-  final Account account;
-
-  // ignore: prefer_const_constructors_in_immutables
-  AccountWidget(this.account, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(account.playerName),
-      subtitle: Text('N° ${account.playerNumber} - ${account.position}'),
-    );
-  }
-}
-
-// Création d'une page pour afficher les informations de tous les comptes (joueurs)
-class AccountPage extends StatelessWidget {
-  const AccountPage({super.key});
+// Nouveau widget AccountSettingsScreen inspiré de Google
+class AccountSettingsScreen extends StatelessWidget {
+  const AccountSettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Liste des Joueurs'),
+        title: const Text("Account Settings"),
       ),
-      body: ListView.builder(
-        itemCount: accounts.length,
-        itemBuilder: (context, index) {
-          return AccountWidget(accounts[index]);
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView(
+          children: [
+            // Avatar et informations personnelles
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: NetworkImage('https://www.example.com/avatar.jpg'), // Avatar
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              "John Doe",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 4),
+            const Text("john.doe@example.com", style: TextStyle(fontSize: 16)),
+            const Divider(height: 40),
+            
+            // Paramètres du compte
+            ListTile(
+              title: const Text("Profile Settings"),
+              leading: const Icon(Icons.person),
+              onTap: () {
+                // Action pour accéder aux paramètres du profil
+              },
+            ),
+            ListTile(
+              title: const Text("Security"),
+              leading: const Icon(Icons.lock),
+              onTap: () {
+                // Action pour les paramètres de sécurité
+              },
+            ),
+            ListTile(
+              title: const Text("Notifications"),
+              leading: const Icon(Icons.notifications),
+              onTap: () {
+                // Action pour les paramètres de notifications
+              },
+            ),
+            ListTile(
+              title: const Text("Help & Feedback"),
+              leading: const Icon(Icons.help),
+              onTap: () {
+                // Action pour l'aide et les retours
+              },
+            ),
+            ListTile(
+              title: const Text("Log Out"),
+              leading: const Icon(Icons.exit_to_app),
+              onTap: () {
+                // Action pour se déconnecter
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-// Point d'entrée de l'application
 void main() {
-  // ignore: prefer_const_constructors
   runApp(MaterialApp(
     title: 'Football App',
-    home: const AccountPage(), // Affiche la page des comptes (joueurs)
+    home: const MainScreen(),
   ));
 }
