@@ -111,6 +111,13 @@ class BoxeCalendarPage extends StatelessWidget {
       'image1': 'assets/images/jake.png',
       'image2': 'assets/images/tommy.png'
     },
+    {
+      'fighter1': 'Jake Paul',
+      'fighter2': 'Tommy Fury',
+      'date': '25 Mars 2025',
+      'image1': 'assets/images/jake.png',
+      'image2': 'assets/images/tommy.png'
+    },
   ];
 
   @override
